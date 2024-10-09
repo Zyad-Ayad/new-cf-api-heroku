@@ -16,8 +16,8 @@ const browser = await puppeteer.launch({
 
 
 const getAc = async (url) => {
+    const page = await browser.newPage();
     try {
-        const page = await browser.newPage();
         const userAgent = new UserAgent({ deviceCategory: 'desktop' });
         await page.setUserAgent(userAgent.toString());
 
@@ -124,7 +124,6 @@ const getAc = async (url) => {
             data[key] = { ac: data[key].join('-') };
         }
 
-        await page.close();
         
         return {
             status: 'OK',
@@ -141,6 +140,9 @@ const getAc = async (url) => {
             result: 'There is something wrong :(',
             error: err.message
         };
+    }
+    finally {
+        await page.close();
     }
 };
 
