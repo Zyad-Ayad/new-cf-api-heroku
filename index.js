@@ -16,7 +16,12 @@ const browser = await puppeteer.launch({
 
 
 const getAc = async (url) => {
+
+    console.log('\n\nScraping:', url, '\n\n');
+
+
     const page = await browser.newPage();
+
     try {
         const userAgent = new UserAgent({ deviceCategory: 'desktop' });
         await page.setUserAgent(userAgent.toString());
@@ -37,7 +42,7 @@ const getAc = async (url) => {
 
 
         // save page as pdf
-        await page.pdf({ path: 'page.pdf', format: 'A4' });
+        //await page.pdf({ path: 'page.pdf', format: 'A4' });
 
         const data = {};
         const problems = [];
