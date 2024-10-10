@@ -52,7 +52,7 @@ const getAc = async (url) => {
             const sheetNameA = document.querySelector('.contest-name a');
             return {
                 name: sheetNameA ? sheetNameA.textContent.trim() : 'Unknown Contest',
-                link: sheetNameA ? 'https://codeforces.com' + sheetNameA.href : '',
+                link: sheetNameA ? sheetNameA.href : '',
             };
         });
 
